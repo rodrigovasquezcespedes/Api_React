@@ -13,13 +13,7 @@ const MiApi: React.FC<Props> = ({ searchInput }) => {
     const [cards, setCards] = useState<any[]>([]);
     const [isLoading, setLoading] = useState(true);
 
-    useEffect(() => {
-        getCardsMarvelApi();
-    }, [searchInput]);
-
-    const getCardsMarvelApi = async () => {
-        setLoading(true);
-
+    const CardApi = async () => {
         const apiKey = '2e7833fa3306fdbfeff831a6ede55741';
         const hashKey = '61e8b6d2d1b850fe7b48907828e6fea1';
         const apiUrl = 'https://gateway.marvel.com/v1/public/characters';
@@ -36,6 +30,13 @@ const MiApi: React.FC<Props> = ({ searchInput }) => {
         setLoading(false);
     };
 
+
+    useEffect(() => {
+        CardApi();
+    }, [searchInput]);
+
+
+
     const renderContent = () => {
         if (isLoading) {
             return <SpinnerComponent />;
@@ -51,6 +52,8 @@ const MiApi: React.FC<Props> = ({ searchInput }) => {
             );
         }
     };
+
+
     return (
         <div className="contentCard ">
             {renderContent()}
