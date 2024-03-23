@@ -9,7 +9,7 @@ interface Props {
         name: string;
     };
 }
-const Cards: React.FC<Props> = ({ card }) => {
+const CardComponent: React.FC<Props> = ({ card }) => {
     return (
         <div className="row m-2 justify-content-center"  >
             <Card border="light" className='bg-dark pt-2' style={{ width: '15rem' }}>
@@ -22,4 +22,4 @@ const Cards: React.FC<Props> = ({ card }) => {
     );
 };
 
-export default Cards;
+export default CardComponent;

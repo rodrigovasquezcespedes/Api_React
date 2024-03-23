@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
 import Container from 'react-bootstrap/Container'
-import Spinner from 'react-bootstrap/Spinner'
 import Row from 'react-bootstrap/Row'
-import Cards from './Cards'
+import CardComponent from './CardComponent'
+import SpinnerComponent from './SpinnerComponent'
 
-interface MiAppProps {
+
+interface Props {
     searchInput: string;
 }
 
-const MiApp: React.FC<MiAppProps> = ({ searchInput }) => {
+const MiApi: React.FC<Props> = ({ searchInput }) => {
     const [cards, setCards] = useState<any[]>([]);
     const [isLoading, setLoading] = useState(true);
 
@@ -25,7 +26,7 @@ const MiApp: React.FC<MiAppProps> = ({ searchInput }) => {
 
         let url;
         if (searchInput !== '') {
-            url = `${apiUrl}?nameStartsWith=${searchInput}&ts=1&apikey=${apiKey}&hash=${hashKey}&limit=20`;
+            url = `${apiUrl}?nameStartsWith=${searchInput}&ts=1&apikey=${apiKey}&hash=${hashKey}&limit=30`;
         } else {
             url = `${apiUrl}?ts=1&apikey=${apiKey}&hash=${hashKey}&limit=30`;
         }
@@ -35,18 +36,26 @@ const MiApp: React.FC<MiAppProps> = ({ searchInput }) => {
         setLoading(false);
     };
 
-    const LoadingCard: React.FC = () => (
-        <div className="spinnerContent text-center p-5">
-            <Spinner animation="border" variant="light" role="status" />
-            <h1 className='text-center text-danger border-dark'>CARGANDO...</h1>
-        </div>
-    );
-
+    const renderContent = () => {
+        if (isLoading) {
+            return <SpinnerComponent />;
+        } else {
+            return (
+                <Container>
+                    <Row xs="auto">
+                        {cards.map((card) => (
+                            <CardComponent key={card.id} card={card} />
+                        ))}
+                    </Row>
+                </Container>
+            );
+        }
+    };
     return (
         <div className="contentCard ">
-            {isLoading ? (<LoadingCard />):(<Container><Row xs="auto">{cards.map((card) => (<Cards key={ card.id} card={card} />))}</Row></Container>)}
+            {renderContent()}
         </div>
     );
 };
 
-export default MiApp;
+export default MiApi;
