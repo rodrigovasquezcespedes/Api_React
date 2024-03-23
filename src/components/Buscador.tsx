@@ -19,7 +19,7 @@ const NavbarMarvel: React.FC<NavbarMarvelProps> = ({ searchInput, setSearchInput
                     <Navbar.Brand>
                         <h1 className='text-white'>Api Marvel</h1>
                     </Navbar.Brand>
-                        <input type="search" placeholder=" Buscar Personaje" className="w-50 rounded-pill border-warning" autoFocus value={searchInput} onChange={handleChange} />
+                        <input type="search" placeholder=" Buscar Personaje" className="w-50 rounded-pill border-warning form-control" autoFocus value={searchInput} onChange={handleChange} />
                     <img src={Logo} alt="logo marvel" width="100" height="50" />
                 </Container>
             </Navbar>
