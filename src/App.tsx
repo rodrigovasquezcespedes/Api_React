@@ -3,8 +3,12 @@ import { useState } from 'react';
 import MiApi from './components/MiApi';
 import Buscador from './components/Buscador';
 
-const App: React.FC = () => {
-  const [searchInput, setSearchInput] = useState<string>('');
+interface Props{
+  searchInput: string
+}
+
+const App: React.FC<Props> = () => {
+  const [searchInput, setSearchInput] = useState('');
 
   return (
     <div>

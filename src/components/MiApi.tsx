@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row'
 import CardComponent from './CardComponent'
 import SpinnerComponent from './SpinnerComponent'
 
-
+//problemas con el eslinter
 interface Props {
     searchInput: string
 }
@@ -26,6 +26,7 @@ const MiApi: React.FC<Props> = ({ searchInput }) => {
         } else {
             url = `${apiUrl}?ts=1&apikey=${apiKey}&hash=${hashKey}&limit=${limits}`;
         }
+
         const response = await fetch(url);
         const data = await response.json();
         setCards(data.data.results);
@@ -38,6 +39,7 @@ const MiApi: React.FC<Props> = ({ searchInput }) => {
         console.log(cards)
     }, [searchInput]);
 
+
     const toggleReverseOrder = () => {
         setReverseOrder(!reverseOrder);
     };
@@ -46,7 +48,7 @@ const MiApi: React.FC<Props> = ({ searchInput }) => {
         if (isLoading) {
             return <SpinnerComponent />;
         } else {
-            let sortedCards = [...cards].sort((b,a) => a.name.localeCompare(b.name));
+            let sortedCards = [...cards].sort((b, a) => a.name.localeCompare(b.name));
             sortedCards.reverse();
 
             if (reverseOrder) {
@@ -62,7 +64,6 @@ const MiApi: React.FC<Props> = ({ searchInput }) => {
                             </div>
                         ) : (
                             sortedCards.map((card) => {
-                                console.log("ID del personaje:", card.id);
                                 return <CardComponent key={card.id} card={card} />;
                             })
                         )}
