@@ -17,7 +17,7 @@ const Buscador: React.FC<Props> = ({ searchInput, setSearchInput }) => {
             <Container className='mw-100'>
                 <Navbar className='bg-danger img-thumbnail m-1'>
                     <img src={Logo} alt="logo marvel" className='mx-5' />
-                    <input type="search" placeholder=" Buscar Personaje" className="w-50 rounded-pill border-warning form-control mx-5 " autoFocus value={searchInput} onChange={handleChange} />
+                    <input type="search" placeholder=" Buscar Personaje"  value={searchInput} onChange={handleChange} className="w-50 rounded-pill border-warning form-control mx-5 " autoFocus/>
                 </Navbar>
             </Container>
         </>

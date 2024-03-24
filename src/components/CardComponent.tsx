@@ -32,7 +32,6 @@ const CardComponent: React.FC<Props> = ({ card }) => {
               <div id="example-collapse-text">
                 <ul className="list-group mt-2">
                   <li className="list-group-item">{card.description}</li>
-                  {/* Agrega más características según sea necesario */}
                 </ul>
               </div>
             </Collapse>
