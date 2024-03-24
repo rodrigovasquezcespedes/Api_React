@@ -4,12 +4,12 @@ import React, { useState } from 'react';
 
 interface Props {
     card: {
+        id:number;
         thumbnail: {
             path: string;
             extension: string;
         };
         name: string;
-        id:number;
         description:string;
     };
 }
